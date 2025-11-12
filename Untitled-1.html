@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Developer Portfolio</title>
+  <meta name="description" content="Developer portfolio — projects, skills, contact" />
+  <style>
+    :root{
+      --bg:#071023; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.03);
+      --radius:14px; --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#040814 0%, #071023 60%); color:#e6eef6; -webkit-font-smoothing:antialiased; padding:28px}
+
+    .wrap{max-width:var(--max-width);margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+    .logo{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041022}
+    h1{font-size:22px;margin:0}
+    .sub{color:var(--muted);margin-top:4px;font-size:14px}
+
+    nav{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .nav-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer}
+
+    main{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+
+    /* left column */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px)}
+
+    .hero{display:flex;gap:16px;align-items:center}
+    .avatar{width:110px;height:110px;border-radius:16px;background:linear-gradient(135deg,#0ea5a8,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#041022}
+    .hero-meta h2{margin:0;font-size:20px}
+    .hero-meta p{margin:6px 0 0;color:var(--muted)}
+    .cta-row{margin-top:12px;display:flex;gap:8px}
+    .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--accent);cursor:pointer}
+    .btn.secondary{color:var(--muted);border-style:dashed}
+
+    /* about */
+    .about{margin-top:14px;color:var(--muted);line-height:1.6}
+
+    /* projects */
+    .controls{display:flex;gap:8px;align-items:center;margin-top:16px}
+    .search{flex:1}
+    input[type=text]{width:100%;padding:9px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:var(--card);color:inherit}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:8px 10px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);cursor:pointer;color:var(--muted);font-size:13px}
+    .chip.active{background:linear-gradient(90deg,#11313a,#071023);color:var(--accent);border-color:rgba(110,231,183,0.12)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+    .card{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03);transition:transform .18s}
+    .card:hover{transform:translateY(-6px)}
+    .card h3{margin:0 0 6px;font-size:15px}
+    .meta{color:var(--muted);font-size:13px}
+    .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* right column */
+    aside .panel{position:sticky;top:28px}
+    .skills{display:flex;flex-direction:column;gap:8px}
+    .skill{display:flex;justify-content:space-between;align-items:center}
+    .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;width:70%}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:60%}
+
+    .contact a{display:inline-block;margin-right:8px;color:var(--muted);text-decoration:none}
+
+    footer{margin-top:14px;color:var(--muted);font-size:13px}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(1,6,14,0.6), rgba(1,6,14,0.8));padding:28px}
+    .modal.open{display:flex}
+    .modal-card{width:100%;max-width:920px;background:#051027;border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.04)}
+
+    @media(max-width:980px){main{grid-template-columns:1fr} aside{order:2}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">YN</div>
+      <div>
+        <h1>VIGNESH M</h1>
+        <div class="sub">Frontend Developer • JavaScript • Building delightful web experiences</div>
+        <nav>
+          <button class="nav-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</button>
+          <button class="nav-btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+          <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="panel">
+          <div class="hero">
+            <div class="avatar">YN</div>
+            <div class="hero-meta">
+              <h2>Hello — I'm Vignesh.</h2>
+              <p class="sub">I design & build responsive web apps. I accessible interactions, and fast experiences.</p>
+              <div class="cta-row">
+                <button class="btn" onclick="downloadResume()">Download Resume</button>
+                <button class="btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="about" class="about">
+            <h3 style="margin-top:14px">About me</h3>
+            <p>I’m a frontend developer with a focus on building interactive UIs. I enjoy taking product ideas and turning them into clean, maintainable code with attention to performance and accessibility.</p>
+            <ul style="color:var(--muted)">
+              <li>Experience: 6 months building SPA and component libraries</li>
+              <li>Primary: HTML, CSS, JavaScript (ES6+)</li>
+              <li>Frameworks: React (comfortable to move to React later)</li>
+            </ul>
+          </div>
+
+          <div id="projects" style="margin-top:12px">
+            <div class="controls">
+              <div class="search"><input id="q" type="text" placeholder="Search projects..." /></div>
+              <div class="filters" id="filters"></div>
+            </div>
+
+            <div class="grid" id="grid"></div>
+          </div>
+        </div>
+
+        <footer>Built with plain HTML/CSS/JS — copy, customize, and host on GitHub Pages.</footer>
+      </section>
+
+      <aside>
+        <div class="panel">
+          <h3>Skills</h3>
+          <div class="skills">
+            <div class="skill"><span>JavaScript</span><span>Intermediate</span></div>
+            <div class="skill"><span>React</span><span>Intermediate</span></div>
+            <div class="skill"><span>CSS / Animation</span><span>Intermediate</span></div>
+            <div class="skill"><span>Accessibility</span><span>Intermediate</span></div>
+          </div>
+
+          <h3 style="margin-top:12px">Contact</h3>
+          <div id="contact" class="contact" style="color:var(--muted)">
+            <p>Email: <a href="#" id="emailLink">vigneshvkvk16@gmail.com</a></p>
+            <p>LinkedIn: <a href="#" target="_blank">https://www.linkedin.com/in/vignesh-murugan-705144328</a></p>
+            <p>GitHub: <a href="#" target="_blank">github.com/yourname</a></p>
+            <div style="margin-top:8px">
+              <button class="btn" onclick="copyEmail()">Copy Email</button>
+              <a class="btn" href="#" id="cvDownload">Open Resume</a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Modal for project details -->
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <button class="close" id="closeModal" style="float:right;background:transparent;border:0;color:var(--muted);font-size:18px;cursor:pointer">✕</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc" style="color:var(--muted)"></p>
+      <div style="margin-top:12px" id="modalLinks"></div>
+    </div>
+  </div>
+
+  <script>
+    // --- example projects (customize these) ---
+    const projects = [
+      {id:1,title:'Interactive Portfolio',tags:['Web','UI','CSS Animations'],desc:'Single-file portfolio template with JS-driven project filtering and modals. Built for performance and accessibility.',live:'#',code:'#'},
+      {id:2,title:'Taskmate — Todo App',tags:['React','PWA','IndexedDB'],desc:'Offline-first todo app with sync and optimistic UI updates.',live:'#',code:'#'},
+      {id:3,title:'Shop UI Kit',tags:['Design System','Components','Accessibility'],desc:'A small component library of accessible form controls and layout primitives.',live:'#',code:'#'},
+      {id:4,title:'Data Viz Dashboard',tags:['D3','Charts','Data'],desc:'Interactive charts and filters for large datasets with performant rendering.',live:'#',code:'#'}
+    ];
+
+    // populate tags
+    const allTags = Array.from(new Set(projects.flatMap(p=>p.tags))).sort();
+    const filtersEl = document.getElementById('filters');
+    const grid = document.getElementById('grid');
+    const qInput = document.getElementById('q');
+    let activeTag = null;
+
+    function renderFilters(){
+      filtersEl.innerHTML = '';
+      const chipAll = document.createElement('div');
+      chipAll.className='chip active'; chipAll.textContent='All';
+      chipAll.onclick=()=>{activeTag=null; updateChips(); renderGrid();}
+      filtersEl.appendChild(chipAll);
+      allTags.forEach(t=>{
+        const c=document.createElement('div'); c.className='chip'; c.textContent=t; c.onclick=()=>{activeTag=(activeTag===t?null:t); updateChips(); renderGrid();}; filtersEl.appendChild(c);
+      });
+    }
+    function updateChips(){
+      [...filtersEl.children].forEach(ch=>{
+        if(activeTag==null && ch.textContent==='All') ch.classList.add('active'); else ch.classList.remove('active');
+        if(activeTag && ch.textContent===activeTag) ch.classList.add('active');
+      });
+    }
+
+    function renderGrid(){
+      const q=qInput.value.trim().toLowerCase(); grid.innerHTML='';
+      const results = projects.filter(p=>{
+        if(activeTag && !p.tags.includes(activeTag)) return false;
+        if(q.length>0){ const hay = (p.title+' '+p.desc+' '+p.tags.join(' ')).toLowerCase(); return hay.includes(q); }
+        return true;
+      });
+      if(results.length===0){ const el=document.createElement('div'); el.style.gridColumn='1/-1'; el.style.padding='18px'; el.style.color='var(--muted)'; el.textContent='No projects match.'; grid.appendChild(el); return; }
+      results.forEach(p=>{
+        const card=document.createElement('article'); card.className='card';
+        card.innerHTML = `
+          <h3>${p.title}</h3>
+          <div class="meta">${p.tags.join(' • ')}</div>
+          <p style="color:var(--muted);margin-top:10px">${p.desc}</p>
+          <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div style="margin-top:10px"><button class="btn" data-id="${p.id}">Details</button> <a class="btn" href="${p.live}" target="_blank">Live</a> <a class="btn" href="${p.code}" target="_blank">Code</a></div>
+        `;
+        grid.appendChild(card);
+      });
+      grid.querySelectorAll('button[data-id]').forEach(b=>b.addEventListener('click',e=>openModal(Number(e.currentTarget.dataset.id))));
+    }
+
+    function openModal(id){
+      const p = projects.find(x=>x.id===id); if(!p) return;
+      document.getElementById('modalTitle').textContent=p.title;
+      document.getElementById('modalDesc').textContent=p.desc;
+      const links = document.getElementById('modalLinks'); links.innerHTML = `<a class="btn" href="${p.live}" target="_blank">Open Live</a> <a class="btn" href="${p.code}" target="_blank">View Code</a>`;
+      document.getElementById('modal').classList.add('open');
+    }
+    function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); });
+
+    qInput.addEventListener('input', ()=>renderGrid());
+    renderFilters(); renderGrid();
+
+    // copy email
+    function copyEmail(){ navigator.clipboard.writeText('your.email@example.com').then(()=>{ alert('Email copied to clipboard'); }); }
+    document.getElementById('emailLink').addEventListener('click', (e)=>{ e.preventDefault(); copyEmail(); });
+
+    // download resume as simple txt/pdf placeholder
+    function downloadResume(){
+      const txt = `Your Name\nFrontend Developer\n\nExperience:\n- 3+ years building web apps\n\nSkills:\n- JavaScript, React, CSS, Accessibility`;
+      const blob = new Blob([txt], {type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'YourName_Resume.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    // wire CV/Open resume link
+    document.getElementById('cvDownload').addEventListener('click', (e)=>{ e.preventDefault(); downloadResume(); });
+
+    // small accessible focus handling for keyboard users
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+  </script>
+</body>
+</html>
