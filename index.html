@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vignesh</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- <link rel="icon" href="star.png"> -->
+</head>
+<body>
+ 
+
+
+
+  <!-- <title>Henstar S | Portfolio</title> -->
+  <style>
+    /* 🌌 Global Styles */
+
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      margin: 15px 0;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      font-size: 28px;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #00eeff;
+      transform: scale(1.2);
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 30px;
+
+      justify-content: center;
+      padding: 20px;
+
+      /* transition: all 0.4s ease; */
+    }
+
+    /* Left & right box */
+    .contact,
+    .contact-details {
+    
+          flex: 1;
+    flex-direction: column;
+    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 27px;
+    border-radius: 25px;
+   
+    box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
+
+    }
+
+    /* Form styling */
+    .contact-details form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-details input,
+    .contact-details textarea {
+      width: 94%;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .contact-details button {
+      padding: 12px;
+      background: #00fffb;
+      color: rgb(33, 32, 32);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .contact-details button:hover {
+      background: #00b0b3;
+    }
+
+    /* 📱 Mobile View - Stack Columns */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-details input,
+      .contact-details textarea {
+        width: 87%;
+        padding: 12px 14px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    /* 🌟 Header */
+    header {
+      background: linear-gradient(90deg, #02ffee, #29afa6, #000000);
+      color: #ffffff;
+      padding: 50px 0;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 120, 255, 0.4);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px #000000;
+    }
+
+    header p {
+      color: #e6f3ff;
+      font-size: 1.2rem;
+    }
+
+    /* 🧭 Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #0a0a0a;
+      border-bottom: 2px solid #1ecbff;
+    }
+
+    nav a {
+      color: #ffffff;
+      padding: 14px 22px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border-radius: 15px;
+    }
+
+    nav a:hover {
+      background: linear-gradient(90deg, #00f7ff, #00eeff);
+      color: #000;
+
+      box-shadow: 0 0 15px #00eeff;
+    }
+
+    /* 🧩 Sections */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffffff;
+      text-shadow: 0 0 20px #33ffff;
+      margin-bottom: 30px;
+      font-size: 2.3rem;
+      font-weight: bold;
+    }
+
+    /* 📦 Cards and Grids */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
+      transition: all 0.4s ease;
+
+    }
+
+    .card:hover {
+
+      box-shadow: 0 0 25px #00e1ff, 0 0 40px #00aaff;
+    }
+
+    /* 🔘 Download Resume Button */
+    .btn {
+      background: linear-gradient(90deg, #00fff2, #00eaff);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #00bfff, #00c8ff);
+      box-shadow: 0 0 25px #cce6ff;
+      color: #000;
+    }
+
+    /* 💬 Contact Form */
+    form input,
+    form textarea {
+      width: 95%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #007bff;
+      border-radius: 10px;
+      background: #000;
+      color: #ffffff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 120, 255, 0.3);
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #d9d9d9;
+    }
+
+    form button {
+      background: linear-gradient(90deg, #007bff, #00bfff);
+      color: #ffffff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 0 15px #007bff;
+      transition: all 0.3s ease;
+    }
+
+    form button:hover {
+      background: linear-gradient(90deg, #00bfff, #007bff);
+      box-shadow: 0 0 25px #cce6ff;
+      color: #000;
+    }
+
+    /* 🔗 Links */
+    a {
+      color: #99ccff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #99ccff;
+    }
+
+    /* ⚡ Footer */
+    footer {
+      background: #000;
+      color: #cce6ff;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 1rem;
+      border-top: 2px solid #00eeff;
+      box-shadow: 0 -2px 15px rgba(0, 150, 255, 0.2);
+    }
+
+    /* 🌠 Animations */
+    section,
+    header,
+    nav,
+    footer {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .currently:hover {
+      box-shadow: 0 0 25px #3cf081, 0 0 40px #048138;
+    }
+
+    .currently {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("ALhcffeIo_tYEUUz2"); // Replace with your EmailJS User ID
+    })();
+
+    function sendMail(e) {
+      console.log(e, "the data")
+      e.preventDefault();
+      emailjs.sendForm("service_cvifc61", "template_jfzo5th", e.target)
+        .then(() => {
+          alert("Message Sent Successfully!");
+          e.target.reset();
+        }, (error) => {
+          alert("Failed to send message: " + JSON.stringify(error));
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <a href="" download class="btn">📄 Download
+    Resume</a>
+
+  <header>
+    <h1>Vignesh M</h1>
+    <p style="margin: 0%;">Java Developer</p>
+
+
+  </header>
+
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <!-- <a href="#certifications">Certifications</a> -->
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+       Java Developer fresher trained in a structured 90-day Full Stack Java program. Strong knowledge in Core Java, Spring Boot, REST APIs, MySQL, and Web Technologies. Certified through industry assessment and ready to contribute to backend development projects.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card"><strong>Languages:</strong> Java,SQL</div>
+      <div class="card"><strong>Frontend:</strong> Angular, React</div>
+      <div class="card"><strong>Backend:</strong> Spring Boot</div>
+      <div class="card" style="display: flex;align-items: center;justify-content: center;"><strong>Database :</strong> PostgreSQL,MySQL</div>
+      <div class="card"><strong>Tools:</strong> Git/GitHub, Netlify</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <!-- <div class="card">
+        <h3>Kicha AI</h3>
+        <p>Full-stack web app Hosting in Versel with Angular frontend, Spring Boot backend with gemini-3-flash-preview responce, PostgreSQL database hosted in Neon.</p>
+        <p><a href="https://kicha-ai.vercel.app/" target="_blank">Live Demo</a></p>
+      </div> -->
+      <!-- <div class="card">
+        <h3>Kicha Netlify</h3>
+        <p>Full-stack web app Hosting in Netlify with Angular/React frontend, Spring Boot backend, PostgreSQL database.</p>
+        <p><a href="https://kichatech.netlify.app/" target="_blank">Live Demo</a></p>
+      </div> -->
+      <!-- <div class="card">
+        <h3>Kicha Flutter</h3>
+        <p>K-Mail is a Flutter-based mobile application that provides a secure user login system with database integration</p>
+        <p><a href="https://henstar2004.github.io/kicha_flutter/" target="_blank">Live Demo</a></p>
+      </div> -->
+      <div class="card">
+        <h3>Jesintha Earth Movers</h3>
+        <p> Jesintha Earth Movers is a responsive static business website developed using Angular and deployed on Vercel.</p>
+        <p><a href="https://jesintha-earth-movers.vercel.app/" target="_blank">Live Demo</a></p>
+      </div>
+      <div class="card">
+        <h3>Attendance Management System</h3>
+        <p>RFID-based smart attendance system with NodeMCU, Firebase, Angular, and real-time SMS notification.</p>
+        <p><a href="https://henstar2004.github.io/project_final_year_2025/" target="">Live Demo</a> |
+          <!-- <a href="https://github.com/Henstar2004/project_final_year_2025/" target="_blank">GitHub Repo</a> -->
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="grid">
+      <!-- <div class="card">
+        <h3>Postulate Info Tech Pvt. Ltd.</h3>
+        <p><strong>Full Stack Developer</strong> (July 2024 – Aug 2024)</p>
+        <p>Built responsive web interfaces using Angular and integrated Spring Boot APIs with MySQL.</p>
+      </div> -->
+      <div class="card">
+        <h3>Postulate Info Tech Pvt. Ltd.</h3>
+        <p><strong>Full Stack Developer</strong> (Mar 2025 – Jun 2025)</p>
+        <p>Designed authentication systems, optimized backend logic, and assisted in deployment.</p>
+      </div>
+      <!-- <div class=" currently" > -->
+      <!-- <div class="card">
+        <h3>
+          Etical Intelligent Technology <br>
+         <span style="background: #00c853; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; margin-left: 8px;">
+          🟢 Currently Working
+        </span> 
+        </h3>
+        <p><strong>Front End Developer</strong> (Aug 2025 – Dec 2025)</p>
+        <p>Developing interactive user interfaces using Angular, HTML, CSS, and TypeScript.
+          Collaborating with backend teams to ensure seamless integration and responsive design.</p>
+      </div> -->
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Bachelor of Engineering (ECE)</h3>
+        <p>St. Mother Therasa Engineering College (2021 – 2025)</p>
+      </div>
+      <div class="card">
+        <h3>HSC</h3>
+        <p>CM Higher Secondary School (2020 – 2021)</p>
+      </div>
+      <div class="card">
+        <h3>SSLC</h3>
+        <p>CM Matriculation Higher Secondary School (2018 – 2019)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="grid">
+      <div class="card">Java Programming – HackerRank</div>
+      <div class="card">Full Stack Development – Udemy</div>
+      <div class="card">Database Management – Coursera</div>
+    </div>
+  </section> -->
+
+  <section id="services">
+    <h2>Services</h2>
+    <div class="grid">
+      
+      <div class="card">
+        <h3>Web Development</h3>
+        Responsive and high-performance websites using Angular & React.
+      </div>
+
+      <!-- <div class="card">
+        <h3>Mobile App Development</h3>
+        Cross-platform applications built with Flutter (Android, iOS & Web).
+      </div> -->
+
+      <div class="card">
+        <h3>Backend & API Development</h3>
+        Secure REST APIs using Spring Boot with MySQL & PostgreSQL.
+      </div>
+
+      <div class="card">
+        <h3>Deployment & Hosting</h3>
+        Application deployment on Netlify, Render, and GitHub Pages.
+      </div>
+   
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-container">
+
+      <!-- Left side -->
+      <div class="contact">
+        <p><strong>Email:</strong> <a href="mailto:vigneshvkvk16@gmail.com">vigneshvkvk16@gmail.com</a></p>
+        <p><strong>Phone:</strong> 6382056264</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vignesh-murugan-705144328"
+            target="_blank">https://www.linkedin.com/in/vignesh-murugan-705144328</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Vigneshmurugan77" target="_blank">https://github.com/Vigneshmurugan77</a>
+        </p>
+
+        <div class="social-icons" >
+          <a href="mailto:vigneshvkvk16@gmail.com" target="_blank"><i class="bi bi-envelope-fill"></i></a>
+          <a href="tel:6382056264"><i class="bi bi-telephone-fill"></i></a>
+          <a href="https://www.linkedin.com/in/vignesh-murugan-705144328" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/Vigneshmurugan77" target="_blank"><i class="bi bi-github"></i></a>
+        </div>
+
+      </div>
+
+      <!-- Right side -->
+      <div class="contact-details">
+        <h3>Send me a message</h3>
+
+        <form onsubmit="sendMail(event)">
+          <input type="text" name="from_name" placeholder="Your Name" required>
+          <input type="email" name="reply_to" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vignish M | Portfolio Website</p>
+  </footer>
+  
+</body>
+</html>
